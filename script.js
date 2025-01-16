@@ -6,29 +6,39 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Search functionality
-    const searchInput = document.querySelector('#search');
-    const questions = document.querySelectorAll('.question-container');
+     // Cache questions container
+    const questionsContainer = document.querySelector('.questions-container');
 
-    searchInput.addEventListener('input', () => {
-         const query = searchInput.value.toLowerCase();
-        filterQuestions(query);
-    });
+    // Function to filter questions based on the query and current category
+    function filterQuestions(query, category) {
+         let questions = Array.from(questionsContainer.querySelectorAll('.question-container'));
 
-      // Search functionality com o botão
-      const searchButton = document.getElementById('search-button');
-         searchButton.addEventListener('click', () => {
-         const query = searchInput.value.toLowerCase();
-         filterQuestions(query);
-    });
+        if (category && category !== 'home') {
+              questions =  Array.from(questionsContainer.querySelectorAll('.question-container'));
+          }
 
-
-    function filterQuestions(query){
         questions.forEach(container => {
             const question = container.querySelector('.question').textContent.toLowerCase();
             container.style.display = question.includes(query) ? 'block' : 'none';
         });
     }
+
+    // Search functionality with input
+    const searchInput = document.querySelector('#search');
+    searchInput.addEventListener('input', () => {
+        const query = searchInput.value.toLowerCase();
+        const activeCategory = questionsContainer.querySelector('h2').textContent.toLowerCase();
+        filterQuestions(query, activeCategory);
+    });
+
+
+    // Search functionality with button
+    const searchButton = document.getElementById('search-button');
+    searchButton.addEventListener('click', () => {
+        const query = searchInput.value.toLowerCase();
+           const activeCategory = questionsContainer.querySelector('h2').textContent.toLowerCase();
+        filterQuestions(query, activeCategory);
+    });
 
 
     // Category filtering
@@ -58,9 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.categories button').forEach(button => {
         button.addEventListener('click', () => {
             const category = button.getAttribute('data-category');
-            const container = document.querySelector('.questions-container');
-
-            container.innerHTML = `<h2>${category}</h2>`;
+            questionsContainer.innerHTML = `<h2>${category}</h2>`;
 
            categories[category].forEach(item => {
              const questionDiv = document.createElement('div');
@@ -69,12 +77,18 @@ document.addEventListener('DOMContentLoaded', () => {
                <div class="question">${item.question}<span class="arrow">▼</span></div>
                  <div class="answer">${item.answer}</div>
                `;
-                container.appendChild(questionDiv);
+               questionsContainer.appendChild(questionDiv);
 
                  questionDiv.addEventListener('click', () => {
                  questionDiv.classList.toggle('expanded');
               });
              });
-           });
-      });
- });
+            const query = searchInput.value.toLowerCase();
+             filterQuestions(query, category);
+         });
+    });
+
+      // Initial filter for home page
+     const initialQuery = searchInput.value.toLowerCase();
+     filterQuestions(initialQuery, 'home');
+});
