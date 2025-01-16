@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #002060, #0070C0);
+            background: linear-gradient(135deg, #004080, #6699CC);
             color: #ffffff;
             margin: 0;
             padding: 0;
@@ -38,10 +38,12 @@
 
         .search-container input {
             padding: 10px;
-            width: 300px;
-            border: none;
+            width: 60%;
+            max-width: 300px;
+            border: 2px solid #FFD700;
             border-radius: 5px;
-            margin-right: 10px;
+            outline: none;
+            font-size: 1em;
         }
 
         .search-container button {
@@ -59,9 +61,28 @@
             background-color: #FFC107;
         }
 
+        .home-button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #FFD700;
+            color: #002060;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .home-button:hover {
+            background-color: #FFC107;
+        }
+
         .categories {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
+            gap: 15px;
             margin: 20px 0;
         }
 
@@ -69,11 +90,11 @@
             background-color: #0056A6;
             color: #ffffff;
             padding: 15px 30px;
-            margin: 0 10px;
             border: none;
             border-radius: 10px;
             cursor: pointer;
             font-size: 1em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s, background-color 0.3s;
         }
 
@@ -84,6 +105,7 @@
 
         .questions-container {
             max-width: 800px;
+            width: 90%;
             margin: 20px;
             animation: fadeIn 1s ease-in;
         }
@@ -134,6 +156,25 @@
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .categories button {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+
+            .search-container input {
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            header img {
+                max-width: 150px;
+            }
         }
     </style>
     <script>
@@ -195,6 +236,8 @@
         <h1>FAQ - BAT Brasil</h1>
     </header>
 
+    <button class="home-button" onclick="location.reload()">Home</button>
+
     <div class="search-container">
         <input id="search" type="text" placeholder="Pesquisar pergunta...">
         <button>Pesquisar</button>
@@ -216,11 +259,3 @@
         <div class="question-container">
             <div class="question">Quais são os benefícios oferecidos pela BAT Brasil?<span class="arrow">▼</span></div>
             <div class="answer">Os benefícios incluem plano de saúde, vale-alimentação, e programas de desenvolvimento profissional.</div>
-        </div>
-        <div class="question-container">
-            <div class="question">Onde encontro informações sobre sustentabilidade?<span class="arrow">▼</span></div>
-            <div class="answer">As informações estão disponíveis na seção de sustentabilidade do nosso site oficial.</div>
-        </div>
-    </section>
-</body>
-</html>
