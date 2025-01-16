@@ -65,56 +65,70 @@
             margin: 20px 0;
         }
 
-        .categories a {
-            text-decoration: none;
-            color: #ffffff;
+        .categories button {
             background-color: #0056A6;
+            color: #ffffff;
             padding: 15px 30px;
             margin: 0 10px;
+            border: none;
             border-radius: 10px;
+            cursor: pointer;
+            font-size: 1em;
             transition: transform 0.3s, background-color 0.3s;
         }
 
-        .categories a:hover {
+        .categories button:hover {
             background-color: #003A70;
             transform: scale(1.1);
         }
 
-        .common-questions {
+        .questions-container {
             max-width: 800px;
             margin: 20px;
-            text-align: left;
             animation: fadeIn 1s ease-in;
         }
 
-        .common-questions h2 {
+        .questions-container h2 {
             color: #FFD700;
         }
 
-        .common-questions ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .common-questions li {
+        .question-container {
             margin: 10px 0;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 10px;
-            border-radius: 5px;
+            background: #ffffff;
+            color: #002060;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             cursor: pointer;
-            transition: background 0.3s;
+            position: relative;
         }
 
-        .common-questions li:hover {
-            background: rgba(255, 255, 255, 0.2);
+        .question-container .question {
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .question-container .arrow {
+            font-size: 1.2em;
+            transition: transform 0.3s;
+        }
+
+        .question-container.expanded .arrow {
+            transform: rotate(180deg);
         }
 
         .answer {
             display: none;
-            padding: 10px;
-            margin-top: 5px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
+            padding-top: 10px;
+            color: #002060;
+            border-top: 1px solid #ccc;
+            margin-top: 10px;
+        }
+
+        .question-container.expanded .answer {
+            display: block;
         }
 
         @keyframes fadeIn {
@@ -125,10 +139,9 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Dropdown functionality
-            document.querySelectorAll('.question').forEach(question => {
-                question.addEventListener('click', () => {
-                    const answer = question.nextElementSibling;
-                    answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            document.querySelectorAll('.question-container').forEach(container => {
+                container.addEventListener('click', () => {
+                    container.classList.toggle('expanded');
                 });
             });
 
@@ -140,6 +153,37 @@
                 questions.forEach(container => {
                     const question = container.querySelector('.question').textContent.toLowerCase();
                     container.style.display = question.includes(query) ? 'block' : 'none';
+                });
+            });
+
+            // Category filtering
+            const categories = {
+                'SHARE': ['Como compartilhar informações de maneira segura?', 'Quais são as políticas de compartilhamento de arquivos?', 'Como acessar a ferramenta de compartilhamento?'],
+                'B2B': ['Como iniciar uma parceria B2B?', 'Quais são os benefícios para parceiros comerciais?', 'Onde encontro as políticas para parcerias?'],
+                'EXEMPLO3': ['Qual é o propósito do EXEMPLO3?', 'Como participar do programa EXEMPLO3?', 'Quais são os critérios para avaliação no EXEMPLO3?'],
+                'EXEMPLO4': ['O que é o EXEMPLO4?', 'Como faço para me inscrever no EXEMPLO4?', 'Quais benefícios o EXEMPLO4 oferece?']
+            };
+
+            document.querySelectorAll('.categories button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const category = button.textContent;
+                    const container = document.querySelector('.questions-container');
+
+                    container.innerHTML = `<h2>${category}</h2>`;
+
+                    categories[category].forEach(question => {
+                        const questionDiv = document.createElement('div');
+                        questionDiv.className = 'question-container';
+                        questionDiv.innerHTML = `
+                            <div class="question">${question}<span class="arrow">▼</span></div>
+                            <div class="answer">Esta é uma resposta de exemplo para "${question}".</div>
+                        `;
+                        container.appendChild(questionDiv);
+
+                        questionDiv.addEventListener('click', () => {
+                            questionDiv.classList.toggle('expanded');
+                        });
+                    });
                 });
             });
         });
@@ -157,24 +201,24 @@
     </div>
 
     <div class="categories">
-        <a href="share.html">SHARE</a>
-        <a href="b2b.html">B2B</a>
-        <a href="exemplo3.html">EXEMPLO3</a>
-        <a href="exemplo4.html">EXEMPLO4</a>
+        <button>SHARE</button>
+        <button>B2B</button>
+        <button>EXEMPLO3</button>
+        <button>EXEMPLO4</button>
     </div>
 
-    <section class="common-questions">
+    <section class="questions-container">
         <h2>Perguntas Comuns</h2>
         <div class="question-container">
-            <div class="question">Como posso acessar o portal de colaboradores?</div>
+            <div class="question">Como posso acessar o portal de colaboradores?<span class="arrow">▼</span></div>
             <div class="answer">Você pode acessar o portal de colaboradores pelo site oficial, utilizando seu login corporativo.</div>
         </div>
         <div class="question-container">
-            <div class="question">Quais são os benefícios oferecidos pela BAT Brasil?</div>
+            <div class="question">Quais são os benefícios oferecidos pela BAT Brasil?<span class="arrow">▼</span></div>
             <div class="answer">Os benefícios incluem plano de saúde, vale-alimentação, e programas de desenvolvimento profissional.</div>
         </div>
         <div class="question-container">
-            <div class="question">Onde encontro informações sobre sustentabilidade?</div>
+            <div class="question">Onde encontro informações sobre sustentabilidade?<span class="arrow">▼</span></div>
             <div class="answer">As informações estão disponíveis na seção de sustentabilidade do nosso site oficial.</div>
         </div>
     </section>
