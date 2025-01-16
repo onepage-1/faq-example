@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - BAT Brasil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #002060, #0070C0);
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        header img {
+            max-width: 200px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin: 10px 0;
+            color: #FFD700;
+        }
+
+        .search-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .search-container input {
+            padding: 10px;
+            width: 300px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .search-container button {
+            padding: 10px 20px;
+            background-color: #FFD700;
+            color: #002060;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .search-container button:hover {
+            background-color: #FFC107;
+        }
+
+        .categories {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .categories a {
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #0056A6;
+            padding: 15px 30px;
+            margin: 0 10px;
+            border-radius: 10px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .categories a:hover {
+            background-color: #003A70;
+            transform: scale(1.1);
+        }
+
+        .common-questions {
+            max-width: 800px;
+            margin: 20px;
+            text-align: left;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .common-questions h2 {
+            color: #FFD700;
+        }
+
+        .common-questions ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .common-questions li {
+            margin: 10px 0;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .common-questions li:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://i0.wp.com/greatplacetowork.me/wp-content/uploads/2023/09/BAT-1.png?fit=3467%2C2096&ssl=1" alt="BAT Brasil Logo">
+        <h1>FAQ - BAT Brasil</h1>
+    </header>
+
+    <div class="search-container">
+        <input type="text" placeholder="Pesquisar pergunta...">
+        <button>Pesquisar</button>
+    </div>
+
+    <div class="categories">
+        <a href="#">SHARE</a>
+        <a href="#">B2B</a>
+        <a href="#">EXEMPLO3</a>
+        <a href="#">EXEMPLO4</a>
+    </div>
+
+    <section class="common-questions">
+        <h2>Perguntas Comuns</h2>
+        <ul>
+            <li>Como posso acessar o portal de colaboradores?</li>
+            <li>Quais são os benefícios oferecidos pela BAT Brasil?</li>
+            <li>Onde encontro informações sobre sustentabilidade?</li>
+            <li>Quem posso contatar para dúvidas sobre B2B?</li>
+        </ul>
+    </section>
+</body>
+</html>
