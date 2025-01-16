@@ -7,21 +7,34 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: background-color 0.5s ease;
+}
+
+body:hover {
+     background: linear-gradient(135deg, #003060, #4070A0);
 }
 
 header {
     text-align: center;
     padding: 20px;
+     animation: fadeInDown 1s ease-out;
 }
 
 header img {
     max-width: 200px;
+    transition: transform 0.5s ease;
 }
+
+header img:hover{
+    transform: scale(1.1);
+}
+
 
 h1 {
     font-size: 2.5em;
     margin: 10px 0;
     color: #FFD700;
+     animation: fadeIn 1s ease-in;
 }
 
 .search-container {
@@ -30,6 +43,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+     animation: fadeInUp 1s ease-in;
 }
 
 .search-container input {
@@ -37,27 +51,36 @@ h1 {
     width: 60%;
     max-width: 300px;
     border: 2px solid #FFD700;
-    border-radius: 5px 0 0 5px;
+    border-radius: 5px;
     outline: none;
     font-size: 1em;
+    margin-right: 10px; /* Separa a caixa de texto do botão */
+    transition: border-color 0.3s ease;
 }
+
+.search-container input:focus {
+    border-color: #FFC107;
+}
+
 
 .search-container button {
     padding: 10px 15px;
     background-color: #FFD700;
     color: #002060;
     border: none;
-    border-radius: 0 5px 5px 0;
+    border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .search-container button:hover {
     background-color: #FFC107;
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .home-button {
@@ -70,11 +93,13 @@ h1 {
     cursor: pointer;
     font-weight: bold;
     text-align: center;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s ease;
+     animation: slideInLeft 1s ease-out;
 }
 
 .home-button:hover {
     background-color: #FFC107;
+    transform: scale(1.05);
 }
 
 .categories {
@@ -83,6 +108,7 @@ h1 {
     justify-content: center;
     gap: 15px;
     margin: 20px 0;
+     animation: fadeInUp 1s ease-in;
 }
 
 .categories button {
@@ -122,7 +148,14 @@ h1 {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     position: relative;
+    transition: transform 0.3s ease;
 }
+
+.question-container:hover {
+  transform: translateY(-3px);
+   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
 
 .question-container .question {
     font-weight: bold;
@@ -146,15 +179,38 @@ h1 {
     color: #002060;
     border-top: 1px solid #ccc;
     margin-top: 10px;
+     animation: slideInUp 0.5s ease-out;
 }
 
 .question-container.expanded .answer {
     display: block;
+
 }
 
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+     from { opacity: 0; transform: translateY(20px); }
+     to { opacity: 1; transform: translateY(0); }
+}
+
+
+@keyframes slideInLeft {
+ from { transform: translateX(-100%); opacity: 0; }
+ to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 @media (max-width: 768px) {
