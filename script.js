@@ -6,20 +6,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-     // Cache questions container
+      // Cache questions container
     const questionsContainer = document.querySelector('.questions-container');
 
     // Function to filter questions based on the query and current category
-    function filterQuestions(query, category) {
-         let questions = Array.from(questionsContainer.querySelectorAll('.question-container'));
+     function filterQuestions(query, category) {
+           let questions = Array.from(questionsContainer.querySelectorAll('.question-container'));
 
         if (category && category !== 'home') {
-              questions =  Array.from(questionsContainer.querySelectorAll('.question-container'));
-          }
+           questions =  Array.from(questionsContainer.querySelectorAll('.question-container'));
+         }
 
-        questions.forEach(container => {
-            const question = container.querySelector('.question').textContent.toLowerCase();
-            container.style.display = question.includes(query) ? 'block' : 'none';
+         questions.forEach(container => {
+             const question = container.querySelector('.question').textContent.toLowerCase();
+             container.style.display = question.includes(query) ? 'block' : 'none';
         });
     }
 
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.querySelector('#search');
     searchInput.addEventListener('input', () => {
         const query = searchInput.value.toLowerCase();
-        const activeCategory = questionsContainer.querySelector('h2').textContent.toLowerCase();
+        const activeCategory = questionsContainer.querySelector('h2') ? questionsContainer.querySelector('h2').textContent.toLowerCase(): "home";
         filterQuestions(query, activeCategory);
     });
 
@@ -36,14 +36,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchButton = document.getElementById('search-button');
     searchButton.addEventListener('click', () => {
         const query = searchInput.value.toLowerCase();
-           const activeCategory = questionsContainer.querySelector('h2').textContent.toLowerCase();
+        const activeCategory = questionsContainer.querySelector('h2') ? questionsContainer.querySelector('h2').textContent.toLowerCase() : "home";
         filterQuestions(query, activeCategory);
     });
 
-
     // Category filtering
     const categories = {
-        'SHARE': [
+         'SHARE': [
             { question: 'Como compartilhar informações de maneira segura?', answer: 'Para compartilhar informações de maneira segura, utilize os canais aprovados pela empresa, como o sistema interno de arquivos e e-mail corporativo.' },
             { question: 'Quais são as políticas de compartilhamento de arquivos?', answer: 'A política de compartilhamento de arquivos da BAT Brasil exige o uso de ferramentas internas e a conformidade com as diretrizes de proteção de dados.' },
             { question: 'Como acessar a ferramenta de compartilhamento?', answer: 'A ferramenta de compartilhamento pode ser acessada através do portal do colaborador, na seção de ferramentas corporativas.' }
@@ -64,13 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
             { question: 'Quais benefícios o EXEMPLO4 oferece?', answer: 'O EXEMPLO4 oferece oportunidades de desenvolvimento profissional, reconhecimento e participação em projetos inovadores.' }
          ]
     };
-
-    document.querySelectorAll('.categories button').forEach(button => {
+  document.querySelectorAll('.categories button').forEach(button => {
         button.addEventListener('click', () => {
             const category = button.getAttribute('data-category');
             questionsContainer.innerHTML = `<h2>${category}</h2>`;
 
-           categories[category].forEach(item => {
+            categories[category].forEach(item => {
              const questionDiv = document.createElement('div');
              questionDiv.className = 'question-container';
              questionDiv.innerHTML = `
@@ -81,14 +79,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
                  questionDiv.addEventListener('click', () => {
                  questionDiv.classList.toggle('expanded');
-              });
+                });
              });
+
+            // After rendering the category questions, perform initial search
             const query = searchInput.value.toLowerCase();
-             filterQuestions(query, category);
+            filterQuestions(query, category);
          });
     });
 
-      // Initial filter for home page
-     const initialQuery = searchInput.value.toLowerCase();
-     filterQuestions(initialQuery, 'home');
+    // Initial filter for home page
+    const initialQuery = searchInput.value.toLowerCase();
+    filterQuestions(initialQuery, "home");
 });
