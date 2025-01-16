@@ -101,6 +101,7 @@
             background: rgba(255, 255, 255, 0.1);
             padding: 10px;
             border-radius: 5px;
+            cursor: pointer;
             transition: background 0.3s;
         }
 
@@ -108,11 +109,41 @@
             background: rgba(255, 255, 255, 0.2);
         }
 
+        .answer {
+            display: none;
+            padding: 10px;
+            margin-top: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Dropdown functionality
+            document.querySelectorAll('.question').forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+
+            // Search functionality
+            const searchInput = document.querySelector('#search');
+            const questions = document.querySelectorAll('.question-container');
+            searchInput.addEventListener('input', () => {
+                const query = searchInput.value.toLowerCase();
+                questions.forEach(container => {
+                    const question = container.querySelector('.question').textContent.toLowerCase();
+                    container.style.display = question.includes(query) ? 'block' : 'none';
+                });
+            });
+        });
+    </script>
 </head>
 <body>
     <header>
@@ -121,25 +152,31 @@
     </header>
 
     <div class="search-container">
-        <input type="text" placeholder="Pesquisar pergunta...">
+        <input id="search" type="text" placeholder="Pesquisar pergunta...">
         <button>Pesquisar</button>
     </div>
 
     <div class="categories">
-        <a href="#">SHARE</a>
-        <a href="#">B2B</a>
-        <a href="#">EXEMPLO3</a>
-        <a href="#">EXEMPLO4</a>
+        <a href="share.html">SHARE</a>
+        <a href="b2b.html">B2B</a>
+        <a href="exemplo3.html">EXEMPLO3</a>
+        <a href="exemplo4.html">EXEMPLO4</a>
     </div>
 
     <section class="common-questions">
         <h2>Perguntas Comuns</h2>
-        <ul>
-            <li>Como posso acessar o portal de colaboradores?</li>
-            <li>Quais são os benefícios oferecidos pela BAT Brasil?</li>
-            <li>Onde encontro informações sobre sustentabilidade?</li>
-            <li>Quem posso contatar para dúvidas sobre B2B?</li>
-        </ul>
+        <div class="question-container">
+            <div class="question">Como posso acessar o portal de colaboradores?</div>
+            <div class="answer">Você pode acessar o portal de colaboradores pelo site oficial, utilizando seu login corporativo.</div>
+        </div>
+        <div class="question-container">
+            <div class="question">Quais são os benefícios oferecidos pela BAT Brasil?</div>
+            <div class="answer">Os benefícios incluem plano de saúde, vale-alimentação, e programas de desenvolvimento profissional.</div>
+        </div>
+        <div class="question-container">
+            <div class="question">Onde encontro informações sobre sustentabilidade?</div>
+            <div class="answer">As informações estão disponíveis na seção de sustentabilidade do nosso site oficial.</div>
+        </div>
     </section>
 </body>
 </html>
