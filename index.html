@@ -13,35 +13,54 @@
         <h1>FAQ - BAT Brasil</h1>
     </header>
 
-    <button class="home-button" onclick="location.reload()">Home</button>
+    <button class="home-button" onclick="location.reload()" aria-label="Voltar para a página inicial">Home</button>
 
     <div class="search-container">
-        <input id="search" type="text" placeholder="Pesquisar pergunta...">
-        <button id="search-button"><i class="fas fa-search"></i></button>
+        <input id="search" type="text" placeholder="Pesquisar pergunta..." aria-label="Pesquisar perguntas">
+        <button id="search-button" aria-label="Botão de pesquisa"><i class="fas fa-search"></i></button>
     </div>
 
-    <div class="categories">
-        <button data-category="SHARE">SHARE</button>
-        <button data-category="B2B">B2B</button>
-        <button data-category="EXEMPLO3">EXEMPLO3</button>
-        <button data-category="EXEMPLO4">EXEMPLO4</button>
+    <div class="categories" role="menubar">
+        <button data-category="SHARE" role="menuitem">SHARE</button>
+        <button data-category="B2B" role="menuitem">B2B</button>
+        <button data-category="EXEMPLO3" role="menuitem">EXEMPLO3</button>
+        <button data-category="EXEMPLO4" role="menuitem">EXEMPLO4</button>
     </div>
+
+    <aside class="sidebar">
+       <button class="menu-button" aria-label="Abrir menu"><i class="fas fa-bars"></i></button>
+        <nav class="sidebar-nav">
+            <button class="favorites-button" aria-label="Ver perguntas favoritas">Favoritos</button>
+            <ul class="sidebar-menu">
+            </ul>
+        </nav>
+    </aside>
 
     <section class="questions-container">
-         <h2>Perguntas Comuns</h2>
-         <div class="question-container">
-             <div class="question">Como posso acessar o portal de colaboradores?<span class="arrow">▼</span></div>
-             <div class="answer">Você pode acessar o portal de colaboradores pelo site oficial, utilizando seu login corporativo.</div>
-         </div>
-         <div class="question-container">
-             <div class="question">Quais são os benefícios oferecidos pela BAT Brasil?<span class="arrow">▼</span></div>
-             <div class="answer">Os benefícios incluem plano de saúde, vale-alimentação, e programas de desenvolvimento profissional.</div>
-         </div>
-           <div class="question-container">
-            <div class="question">Como faço para solicitar férias?<span class="arrow">▼</span></div>
+        <h2>Perguntas Comuns</h2>
+        <div class="question-container home-question" data-question-id="1" aria-label="Pergunta: Como posso acessar o portal de colaboradores?">
+            <div class="question">Como posso acessar o portal de colaboradores?<span class="arrow">▼</span><button class="favorite-button" aria-label="Adicionar aos favoritos"><i class="fas fa-star"></i></button></div>
+            <div class="answer">Você pode acessar o portal de colaboradores pelo site oficial, utilizando seu login corporativo.</div>
+        </div>
+        <div class="question-container home-question" data-question-id="2" aria-label="Pergunta: Quais são os benefícios oferecidos pela BAT Brasil?">
+            <div class="question">Quais são os benefícios oferecidos pela BAT Brasil?<span class="arrow">▼</span><button class="favorite-button" aria-label="Adicionar aos favoritos"><i class="fas fa-star"></i></button></div>
+            <div class="answer">Os benefícios incluem plano de saúde, vale-alimentação, e programas de desenvolvimento profissional.</div>
+        </div>
+        <div class="question-container home-question" data-question-id="3" aria-label="Pergunta: Como faço para solicitar férias?">
+            <div class="question">Como faço para solicitar férias?<span class="arrow">▼</span><button class="favorite-button" aria-label="Adicionar aos favoritos"><i class="fas fa-star"></i></button></div>
             <div class="answer">Você pode solicitar suas férias através do portal de colaboradores na seção de gestão de pessoal.</div>
         </div>
     </section>
+
+     <section class="favorites-container" style="display: none;">
+        <h2>Perguntas Favoritas</h2>
+        <div class="no-favorites-message" style="display: none;">Nenhuma pergunta adicionada aos favoritos.</div>
+     </section>
+
+
+    <footer class="contact-info">
+    <p>Dúvidas? Fale conosco pelo <a href="https://wa.me/5531998751542" target="_blank" aria-label="Fale conosco pelo WhatsApp"><i class="fab fa-whatsapp"></i> WhatsApp: 31 99875-1542</a></p>
+</footer>
     <script src="script.js"></script>
 </body>
 </html>
