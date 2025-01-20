@@ -13,13 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function filterQuestions(query, category) {
         let questions;
         if (category && category !== 'home') {
-             // Se uma categoria está selecionada, busca as questões DENTRO dessa categoria
+            // Se uma categoria está selecionada, busca as questões DENTRO dessa categoria
             questions = Array.from(questionsContainer.querySelectorAll('.question-container'));
         } else {
-           // Se estiver na home, busca todas as questões (incluindo as categorias)
+            // Se estiver na home, busca todas as questões (incluindo as categorias)
            questions = Array.from(document.querySelectorAll('.question-container'));
         }
-
 
         questions.forEach(container => {
             const question = container.querySelector('.question').textContent.toLowerCase();
@@ -32,15 +31,15 @@ document.addEventListener('DOMContentLoaded', () => {
     searchInput.addEventListener('input', () => {
         const query = searchInput.value.toLowerCase();
         const activeCategory = questionsContainer.querySelector('h2') ? questionsContainer.querySelector('h2').textContent.toLowerCase() : "home";
-         filterQuestions(query, activeCategory);
+        filterQuestions(query, activeCategory);
     });
 
     // Search functionality with button
     const searchButton = document.getElementById('search-button');
     searchButton.addEventListener('click', () => {
-         const query = searchInput.value.toLowerCase();
+        const query = searchInput.value.toLowerCase();
         const activeCategory = questionsContainer.querySelector('h2') ? questionsContainer.querySelector('h2').textContent.toLowerCase() : "home";
-         filterQuestions(query, activeCategory);
+        filterQuestions(query, activeCategory);
     });
 
     // Category filtering
@@ -92,7 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
                      questionsContainer.appendChild(noQuestionsDiv)
                  }
 
-
             // After rendering the category questions, perform initial search
             const query = searchInput.value.toLowerCase();
             filterQuestions(query, category);
@@ -101,5 +99,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial filter for home page
     const initialQuery = searchInput.value.toLowerCase();
-    filterQuestions(initialQuery, "home");
+     filterQuestions(initialQuery, "home");
 });
