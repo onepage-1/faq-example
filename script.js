@@ -15,14 +15,15 @@ document.addEventListener('DOMContentLoaded', () => {
         question.classList.add('home-question');
     });
 
-    // Function to filter questions based on the query and current category
+   // Function to filter questions based on the query and current category
     function filterQuestions(query, category) {
         let questions = [];
-        if (category === 'home') {
-             // Se estiver na home, busca todas as perguntas com a classe 'question-container'
+
+        if (category === 'home' || !category) {
+            // Se estiver na home ou sem categoria definida, busca todas as perguntas com a classe 'question-container'
             questions = Array.from(document.querySelectorAll('.question-container'));
-        } else if (category) {
-           // Se uma categoria está selecionada, busca as questões DENTRO dessa categoria
+        } else {
+            // Se uma categoria está selecionada, busca as questões DENTRO dessa categoria
             questions = Array.from(questionsContainer.querySelectorAll('.question-container'));
         }
 
@@ -31,12 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
             container.style.display = question.includes(query) ? 'block' : 'none';
         });
     }
-
+    
     // Search functionality with input
     const searchInput = document.querySelector('#search');
     searchInput.addEventListener('input', () => {
         const query = searchInput.value.toLowerCase();
-        const activeCategory = questionsContainer.querySelector('h2') ? questionsContainer.querySelector('h2').textContent.toLowerCase() : "home";
+         const activeCategory = questionsContainer.querySelector('h2') ? questionsContainer.querySelector('h2').textContent.toLowerCase() : "home";
         filterQuestions(query, activeCategory);
     });
 
@@ -44,10 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchButton = document.getElementById('search-button');
     searchButton.addEventListener('click', () => {
         const query = searchInput.value.toLowerCase();
-        const activeCategory = questionsContainer.querySelector('h2') ? questionsContainer.querySelector('h2').textContent.toLowerCase() : "home";
+         const activeCategory = questionsContainer.querySelector('h2') ? questionsContainer.querySelector('h2').textContent.toLowerCase() : "home";
         filterQuestions(query, activeCategory);
     });
-
 
     // Category filtering
     const categories = {
@@ -76,33 +76,31 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', () => {
             const category = button.getAttribute('data-category');
             questionsContainer.innerHTML = `<h2>${category}</h2>`;
+            
+             if(categories[category] && categories[category].length > 0){
+                 categories[category].forEach(item => {
+                 const questionDiv = document.createElement('div');
+                 questionDiv.className = 'question-container';
+                 questionDiv.innerHTML = `
+                     <div class="question">${item.question}<span class="arrow">▼</span></div>
+                     <div class="answer">${item.answer}</div>
+                 `;
+                 questionsContainer.appendChild(questionDiv);
 
-               if(categories[category] && categories[category].length > 0){
-                    categories[category].forEach(item => {
-                    const questionDiv = document.createElement('div');
-                    questionDiv.className = 'question-container';
-                    questionDiv.innerHTML = `
-                        <div class="question">${item.question}<span class="arrow">▼</span></div>
-                        <div class="answer">${item.answer}</div>
-                    `;
-                    questionsContainer.appendChild(questionDiv);
-
-                    questionDiv.addEventListener('click', () => {
-                        questionDiv.classList.toggle('expanded');
-                        });
+                 questionDiv.addEventListener('click', () => {
+                     questionDiv.classList.toggle('expanded');
+                 });
+              });
+                // Remove a classe 'home-question' quando uma categoria é selecionada
+                const allQuestions = Array.from(document.querySelectorAll('.question-container'));
+                    allQuestions.forEach(question => {
+                        question.classList.remove('home-question');
                     });
-
-                     // Remove a classe 'home-question' quando uma categoria é selecionada
-                     const allQuestions = Array.from(document.querySelectorAll('.question-container'));
-                     allQuestions.forEach(question => {
-                         question.classList.remove('home-question');
-                     });
-                }else{
-                     const noQuestionsDiv = document.createElement('div');
-                     noQuestionsDiv.textContent = "Nenhuma pergunta encontrada nessa categoria.";
+             }else{
+                  const noQuestionsDiv = document.createElement('div');
+                    noQuestionsDiv.textContent = "Nenhuma pergunta encontrada nessa categoria.";
                      questionsContainer.appendChild(noQuestionsDiv)
-                 }
-
+             }
 
             // After rendering the category questions, perform initial search
             const query = searchInput.value.toLowerCase();
