@@ -218,8 +218,8 @@ h1 {
     transform: translateX(-100%);
     z-index: 100;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
 }
-
 .sidebar.open {
     transform: translateX(0);
 }
@@ -247,8 +247,12 @@ h1 {
     font-size: 1em;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-bottom: 10px;
- }
+     margin-bottom: 10px;
+     display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
 .favorites-button:hover {
     background-color: #0056A6;
 }
@@ -259,15 +263,12 @@ h1 {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-
 }
-
 .sidebar-menu li {
     padding: 15px;
      text-align: left;
      cursor: pointer;
     transition: background-color 0.3s ease;
-
 }
 .sidebar-menu li:hover{
   background-color: #0056A6;
@@ -286,19 +287,19 @@ h1 {
  .favorites-container h2 {
     color: #FFD700;
 }
-
-.favorites-container .question-container{
-        cursor: pointer;
-}
+ .favorites-container .question-container {
+    cursor: pointer;
+ }
 .favorite-button {
     background: transparent;
     border: none;
     color: #FFD700;
     cursor: pointer;
+     margin-left: 5px;
 }
- .favorited .favorite-button {
-   color: #FFC107;
- }
+.favorited .favorite-button {
+    color: #FFC107;
+}
  .no-favorites-message {
     color: #FFD700;
     text-align: center;
