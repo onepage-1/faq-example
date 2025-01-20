@@ -9,20 +9,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // Cache questions container
     const questionsContainer = document.querySelector('.questions-container');
 
+     // Adiciona uma classe 'home-question' para identificar as questões da home
+    const homeQuestions = Array.from(questionsContainer.querySelectorAll('.question-container'));
+    homeQuestions.forEach(question => {
+        question.classList.add('home-question');
+    });
+
+
     // Function to filter questions based on the query and current category
     function filterQuestions(query, category) {
-        let questions;
-        if (category && category !== 'home') {
-            // Se uma categoria está selecionada, busca as questões DENTRO dessa categoria
-            questions = Array.from(questionsContainer.querySelectorAll('.question-container'));
-        } else {
-            // Se estiver na home, busca todas as questões (incluindo as categorias)
-           questions = Array.from(document.querySelectorAll('.question-container'));
-        }
-
-        questions.forEach(container => {
-            const question = container.querySelector('.question').textContent.toLowerCase();
-            container.style.display = question.includes(query) ? 'block' : 'none';
+    let questions = [];
+    if (category === 'home') {
+        // Se estiver na home, busca todas as perguntas com a classe 'home-question' e as perguntas das categorias
+        questions = Array.from(document.querySelectorAll('.question-container'));
+    } else if (category) {
+        // Se uma categoria está selecionada, busca as questões DENTRO dessa categoria
+        questions = Array.from(questionsContainer.querySelectorAll('.question-container'));
+    }
+    questions.forEach(container => {
+        const question = container.querySelector('.question').textContent.toLowerCase();
+        container.style.display = question.includes(query) ? 'block' : 'none';
         });
     }
 
@@ -38,9 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchButton = document.getElementById('search-button');
     searchButton.addEventListener('click', () => {
         const query = searchInput.value.toLowerCase();
-        const activeCategory = questionsContainer.querySelector('h2') ? questionsContainer.querySelector('h2').textContent.toLowerCase() : "home";
+         const activeCategory = questionsContainer.querySelector('h2') ? questionsContainer.querySelector('h2').textContent.toLowerCase() : "home";
         filterQuestions(query, activeCategory);
     });
+
 
     // Category filtering
     const categories = {
@@ -65,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { question: 'Quais benefícios o EXEMPLO4 oferece?', answer: 'O EXEMPLO4 oferece oportunidades de desenvolvimento profissional, reconhecimento e participação em projetos inovadores.' }
         ]
     };
-    document.querySelectorAll('.categories button').forEach(button => {
+     document.querySelectorAll('.categories button').forEach(button => {
         button.addEventListener('click', () => {
             const category = button.getAttribute('data-category');
             questionsContainer.innerHTML = `<h2>${category}</h2>`;
@@ -84,7 +91,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     questionDiv.addEventListener('click', () => {
                         questionDiv.classList.toggle('expanded');
                         });
+                     });
+
+                    // Remove a classe 'home-question' quando uma categoria é selecionada
+                     const allQuestions = Array.from(document.querySelectorAll('.question-container'));
+                     allQuestions.forEach(question => {
+                        question.classList.remove('home-question');
                     });
+
                 }else{
                      const noQuestionsDiv = document.createElement('div');
                      noQuestionsDiv.textContent = "Nenhuma pergunta encontrada nessa categoria.";
@@ -97,6 +111,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Initial filter for home page
+    const initialQuery = searchInput.value.toLowerCase();
+    filterQuestions(initialQuery, "home");
+});
     // Initial filter for home page
     const initialQuery = searchInput.value.toLowerCase();
      filterQuestions(initialQuery, "home");
