@@ -9,22 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Cache questions container
     const questionsContainer = document.querySelector('.questions-container');
 
-    // Adiciona uma classe 'home-question' para identificar as questões da home
-    const homeQuestions = Array.from(questionsContainer.querySelectorAll('.question-container'));
-    homeQuestions.forEach(question => {
-        question.classList.add('home-question');
-    });
-
-   // Function to filter questions based on the query and current category
+    // Function to filter questions based on the query and current category
     function filterQuestions(query, category) {
-        let questions = [];
-
-        if (category === 'home' || !category) {
-            // Se estiver na home ou sem categoria definida, busca todas as perguntas com a classe 'question-container'
+        let questions;
+        if (category === 'home') {
+            // Busca em todas as perguntas da página (incluindo as da home e as categorias)
             questions = Array.from(document.querySelectorAll('.question-container'));
+        } else if (category) {
+            // Se uma categoria está selecionada, busca as questões dentro dessa categoria
+             questions = Array.from(questionsContainer.querySelectorAll('.question-container'));
         } else {
-            // Se uma categoria está selecionada, busca as questões DENTRO dessa categoria
-            questions = Array.from(questionsContainer.querySelectorAll('.question-container'));
+           // Caso não tenha categoria selecionada busca apenas as perguntas da home.
+           questions = Array.from(questionsContainer.querySelectorAll('.question-container'));
         }
 
         questions.forEach(container => {
@@ -32,12 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
             container.style.display = question.includes(query) ? 'block' : 'none';
         });
     }
-    
+
     // Search functionality with input
     const searchInput = document.querySelector('#search');
     searchInput.addEventListener('input', () => {
         const query = searchInput.value.toLowerCase();
-         const activeCategory = questionsContainer.querySelector('h2') ? questionsContainer.querySelector('h2').textContent.toLowerCase() : "home";
+        const activeCategory = questionsContainer.querySelector('h2') ? questionsContainer.querySelector('h2').textContent.toLowerCase() : "home";
         filterQuestions(query, activeCategory);
     });
 
@@ -45,11 +41,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchButton = document.getElementById('search-button');
     searchButton.addEventListener('click', () => {
         const query = searchInput.value.toLowerCase();
-         const activeCategory = questionsContainer.querySelector('h2') ? questionsContainer.querySelector('h2').textContent.toLowerCase() : "home";
-        filterQuestions(query, activeCategory);
+        const activeCategory = questionsContainer.querySelector('h2') ? questionsContainer.querySelector('h2').textContent.toLowerCase() : "home";
+         filterQuestions(query, activeCategory);
     });
 
-    // Category filtering
+   // Category filtering
     const categories = {
         'SHARE': [
             { question: 'Como compartilhar informações de maneira segura?', answer: 'Para compartilhar informações de maneira segura, utilize os canais aprovados pela empresa, como o sistema interno de arquivos e e-mail corporativo.' },
@@ -76,35 +72,30 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', () => {
             const category = button.getAttribute('data-category');
             questionsContainer.innerHTML = `<h2>${category}</h2>`;
-            
-             if(categories[category] && categories[category].length > 0){
-                 categories[category].forEach(item => {
-                 const questionDiv = document.createElement('div');
-                 questionDiv.className = 'question-container';
-                 questionDiv.innerHTML = `
-                     <div class="question">${item.question}<span class="arrow">▼</span></div>
-                     <div class="answer">${item.answer}</div>
-                 `;
-                 questionsContainer.appendChild(questionDiv);
 
-                 questionDiv.addEventListener('click', () => {
-                     questionDiv.classList.toggle('expanded');
-                 });
-              });
-                // Remove a classe 'home-question' quando uma categoria é selecionada
-                const allQuestions = Array.from(document.querySelectorAll('.question-container'));
-                    allQuestions.forEach(question => {
-                        question.classList.remove('home-question');
+            if(categories[category] && categories[category].length > 0){
+                 categories[category].forEach(item => {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.className = 'question-container';
+                    questionDiv.innerHTML = `
+                        <div class="question">${item.question}<span class="arrow">▼</span></div>
+                        <div class="answer">${item.answer}</div>
+                    `;
+                    questionsContainer.appendChild(questionDiv);
+
+                    questionDiv.addEventListener('click', () => {
+                        questionDiv.classList.toggle('expanded');
+                        });
                     });
-             }else{
-                  const noQuestionsDiv = document.createElement('div');
+            }else{
+                    const noQuestionsDiv = document.createElement('div');
                     noQuestionsDiv.textContent = "Nenhuma pergunta encontrada nessa categoria.";
-                     questionsContainer.appendChild(noQuestionsDiv)
+                    questionsContainer.appendChild(noQuestionsDiv)
              }
 
-            // After rendering the category questions, perform initial search
+             // After rendering the category questions, perform initial search
             const query = searchInput.value.toLowerCase();
-            filterQuestions(query, category);
+             filterQuestions(query, category);
         });
     });
 
