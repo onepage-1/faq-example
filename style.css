@@ -188,22 +188,22 @@ h1 {
     text-align: center;
     padding: 10px;
     margin-top: 20px;
-     color: #ffffff;
+    color: #ffffff;
     animation: fadeInUp 1s ease-in;
 }
 
 .contact-info a {
     color: #ffffff;
-     text-decoration: none;
+    text-decoration: none;
     display: inline-flex;
     align-items: center;
     gap: 5px;
 }
 .contact-info a:hover{
-   text-decoration: underline;
+    text-decoration: underline;
 }
 .contact-info a i {
-  font-size: 1.2em;
+    font-size: 1.2em;
 }
 .sidebar {
     position: fixed;
@@ -223,7 +223,7 @@ h1 {
 .sidebar.open {
     transform: translateX(0);
 }
- .sidebar-nav {
+.sidebar-nav {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -238,24 +238,6 @@ h1 {
     font-size: 1.5em;
     cursor: pointer;
 }
-.favorites-button {
-    padding: 15px;
-    text-align: left;
-    background: transparent;
-    border: none;
-    color: #ffffff;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-     margin-bottom: 10px;
-     display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 10px;
-}
-.favorites-button:hover {
-    background-color: #0056A6;
-}
 .sidebar-menu {
     list-style: none;
     padding: 0;
@@ -266,45 +248,16 @@ h1 {
 }
 .sidebar-menu li {
     padding: 15px;
-     text-align: left;
-     cursor: pointer;
+    text-align: left;
+    cursor: pointer;
     transition: background-color 0.3s ease;
 }
 .sidebar-menu li:hover{
-  background-color: #0056A6;
+    background-color: #0056A6;
 }
 .sidebar-item.active {
     background-color: #0056A6; /* Cor de fundo quando o item está ativo */
 }
- .favorites-container {
-        max-width: 800px;
-        width: 90%;
-        margin: 20px;
-          display: none;
-        animation: fadeIn 1s ease-in;
-    }
-
- .favorites-container h2 {
-    color: #FFD700;
-}
- .favorites-container .question-container {
-    cursor: pointer;
- }
-.favorite-button {
-    background: transparent;
-    border: none;
-    color: #FFD700;
-    cursor: pointer;
-     margin-left: 5px;
-}
-.favorited .favorite-button {
-    color: #FFC107;
-}
- .no-favorites-message {
-    color: #FFD700;
-    text-align: center;
-    margin-top: 20px;
- }
 /* Animações */
 @keyframes fadeIn {
     from {
@@ -379,6 +332,6 @@ h1 {
     }
     .sidebar {
         width: 100%;
-       transform: translateX(-100%);
+        transform: translateX(-100%);
     }
 }
