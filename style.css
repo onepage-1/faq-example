@@ -11,13 +11,13 @@ body {
 }
 
 body:hover {
-     background: linear-gradient(135deg, #003060, #4070A0);
+    background: linear-gradient(135deg, #003060, #4070A0);
 }
 
 header {
     text-align: center;
     padding: 20px;
-     animation: fadeInDown 1s ease-out;
+    animation: fadeInDown 1s ease-out;
 }
 
 header img {
@@ -25,16 +25,15 @@ header img {
     transition: transform 0.5s ease;
 }
 
-header img:hover{
+header img:hover {
     transform: scale(1.1);
 }
-
 
 h1 {
     font-size: 2.5em;
     margin: 10px 0;
     color: #FFD700;
-     animation: fadeIn 1s ease-in;
+    animation: fadeIn 1s ease-in;
 }
 
 .search-container {
@@ -43,7 +42,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-     animation: fadeInUp 1s ease-in;
+    animation: fadeInUp 1s ease-in;
 }
 
 .search-container input {
@@ -54,14 +53,14 @@ h1 {
     border-radius: 5px;
     outline: none;
     font-size: 1em;
-    margin-right: 10px; /* Separa a caixa de texto do botão */
+    margin-right: 10px;
     transition: border-color 0.3s ease;
+    color: #002060;
 }
 
 .search-container input:focus {
     border-color: #FFC107;
 }
-
 
 .search-container button {
     padding: 10px 15px;
@@ -75,12 +74,12 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .search-container button:hover {
     background-color: #FFC107;
-     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .home-button {
@@ -94,7 +93,7 @@ h1 {
     font-weight: bold;
     text-align: center;
     transition: background-color 0.3s, transform 0.3s ease;
-     animation: slideInLeft 1s ease-out;
+    animation: slideInLeft 1s ease-out;
 }
 
 .home-button:hover {
@@ -108,7 +107,7 @@ h1 {
     justify-content: center;
     gap: 15px;
     margin: 20px 0;
-     animation: fadeInUp 1s ease-in;
+    animation: fadeInUp 1s ease-in;
 }
 
 .categories button {
@@ -152,10 +151,9 @@ h1 {
 }
 
 .question-container:hover {
-  transform: translateY(-3px);
-   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
 }
-
 
 .question-container .question {
     font-weight: bold;
@@ -179,40 +177,188 @@ h1 {
     color: #002060;
     border-top: 1px solid #ccc;
     margin-top: 10px;
-     animation: slideInUp 0.5s ease-out;
+    animation: slideInUp 0.5s ease-out;
 }
 
 .question-container.expanded .answer {
     display: block;
+}
+
+.contact-info {
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+     color: #ffffff;
+    animation: fadeInUp 1s ease-in;
+}
+
+.contact-info a {
+    color: #ffffff;
+     text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+.contact-info a:hover{
+   text-decoration: underline;
+}
+.contact-info a i {
+  font-size: 1.2em;
+}
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #003060;
+    color: #ffffff;
+    padding-top: 80px;
+    transition: transform 0.3s ease;
+    transform: translateX(-100%);
+    z-index: 100;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+ .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.menu-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+.favorites-button {
+    padding: 15px;
+    text-align: left;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+ }
+.favorites-button:hover {
+    background-color: #0056A6;
+}
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 
 }
 
+.sidebar-menu li {
+    padding: 15px;
+     text-align: left;
+     cursor: pointer;
+    transition: background-color 0.3s ease;
+
+}
+.sidebar-menu li:hover{
+  background-color: #0056A6;
+}
+.sidebar-item.active {
+    background-color: #0056A6; /* Cor de fundo quando o item está ativo */
+}
+ .favorites-container {
+        max-width: 800px;
+        width: 90%;
+        margin: 20px;
+          display: none;
+        animation: fadeIn 1s ease-in;
+    }
+
+ .favorites-container h2 {
+    color: #FFD700;
+}
+
+.favorites-container .question-container{
+        cursor: pointer;
+}
+.favorite-button {
+    background: transparent;
+    border: none;
+    color: #FFD700;
+    cursor: pointer;
+}
+ .favorited .favorite-button {
+   color: #FFC107;
+ }
+ .no-favorites-message {
+    color: #FFD700;
+    text-align: center;
+    margin-top: 20px;
+ }
+/* Animações */
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes fadeInUp {
-     from { opacity: 0; transform: translateY(20px); }
-     to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-
 @keyframes slideInLeft {
- from { transform: translateX(-100%); opacity: 0; }
- to { transform: translateX(0); opacity: 1; }
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 @keyframes slideInUp {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
+/* Responsividade */
 @media (max-width: 768px) {
     .categories button {
         padding: 10px 20px;
@@ -229,5 +375,9 @@ h1 {
 
     header img {
         max-width: 150px;
+    }
+    .sidebar {
+        width: 100%;
+       transform: translateX(-100%);
     }
 }
