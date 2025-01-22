@@ -47,20 +47,20 @@ const categories = {
 { question: 'Quais são as políticas de compartilhamento de arquivos?', answer: 'A política de compartilhamento de arquivos da BAT Brasil exige o uso de ferramentas internas e a conformidade com as diretrizes de proteção de dados.' },
 { question: 'Como acessar a ferramenta de compartilhamento?', answer: 'A ferramenta de compartilhamento pode ser acessada através do portal do colaborador, na seção de ferramentas corporativas.' }
 ],
-'B2B': [
+'CONECTA VOCÊ': [
 { question: 'Como iniciar uma parceria B2B?', answer: 'Para iniciar uma parceria B2B, entre em contato com nosso departamento de parcerias através do formulário de contato em nosso site.' },
 { question: 'Quais são os benefícios para parceiros comerciais?', answer: 'Os benefícios para parceiros comerciais incluem acesso a recursos exclusivos, treinamentos e oportunidades de expansão conjunta.' },
 { question: 'Onde encontro as políticas para parcerias?', answer: 'As políticas para parcerias podem ser encontradas no portal do parceiro ou solicitadas diretamente ao departamento de parcerias.' }
 ],
-'EXEMPLO3': [
-{ question: 'Qual é o propósito do EXEMPLO3?', answer: 'O EXEMPLO3 é um programa de desenvolvimento focado em novas tecnologias e liderança.' },
-{ question: 'Como participar do programa EXEMPLO3?', answer: 'A participação no programa EXEMPLO3 é feita através de indicação ou inscrição durante os períodos abertos.' },
-{ question: 'Quais são os critérios para avaliação no EXEMPLO3?', answer: 'Os critérios de avaliação no EXEMPLO3 são desempenho, participação em projetos e potencial de liderança.' }
+'PRIME': [
+{ question: 'Qual é o propósito do Prime?', answer: 'O Prime é um programa de desenvolvimento focado em novas coisas.' },
+{ question: 'Como participar do programa Prime?', answer: 'A participação no programa Prime é feita através de tal lugar.' },
+{ question: 'Quais são os critérios para avaliação no Prime?', answer: 'Os critérios de avaliação no Prime são desempenho, participação em tal coisa.' }
 ],
-'EXEMPLO4': [
-{ question: 'O que é o EXEMPLO4?', answer: 'O EXEMPLO4 é uma iniciativa de inovação e sustentabilidade dentro da BAT Brasil.' },
-{ question: 'Como faço para me inscrever no EXEMPLO4?', answer: 'As inscrições para o EXEMPLO4 são feitas através do portal do colaborador na seção de projetos internos.' },
-{ question: 'Quais benefícios o EXEMPLO4 oferece?', answer: 'O EXEMPLO4 oferece oportunidades de desenvolvimento profissional, reconhecimento e participação em projetos inovadores.' }
+'BOOST PLAN': [
+{ question: 'O que é o Boost Plan?', answer: 'O Boost Plan é uma programa dentro da BAT Brasil.' },
+{ question: 'Como faço para me inscrever no Boost Plan?', answer: 'As inscrições para o Boost Plan são feitas através de tal coisa' },
+{ question: 'Quais benefícios do Boost Plan oferece?', answer: 'O Boost Plan oferece oportunidades.' }
 ]
 };
 document.querySelectorAll('.categories button').forEach(button => {
