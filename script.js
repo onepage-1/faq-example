@@ -43,9 +43,9 @@ filterQuestions(query, activeCategory);
 // Category filtering
 const categories = {
 'SHARE': [
-{ question: 'Como compartilhar informações de maneira segura?', answer: 'Para compartilhar informações de maneira segura, utilize os canais aprovados pela empresa, como o sistema interno de arquivos e e-mail corporativo.' },
-{ question: 'Quais são as políticas de compartilhamento de arquivos?', answer: 'A política de compartilhamento de arquivos da BAT Brasil exige o uso de ferramentas internas e a conformidade com as diretrizes de proteção de dados.' },
-{ question: 'Como acessar a ferramenta de compartilhamento?', answer: 'A ferramenta de compartilhamento pode ser acessada através do portal do colaborador, na seção de ferramentas corporativas.' }
+{ question: 'O que é Share?', answer: 'é um indicador que mede a participação de uma empresa em um determinado setor.' },
+{ question: 'Por que o Market Share é tão importante?', answer: 'Ao acompanhar como essa quota aumenta ou diminui ao longo do tempo, as organizações têm um bom indicativo se suas campanhas de Marketing e ações relacionadas ao planejamento estratégico estão tendo o efeito desejado ou não. Enquanto o aumento do Market Share pode ser um bom sinal, a sua diminuição pode significar que é preciso agir para conter a pressão da concorrência.' },
+{ question: 'Quais são os critérios para definir seu market share?', answer: 'O ideal é utilizar diversos fatores para ter uma percepção mais completa do tamanho do seu mercado de atuação. Dessa forma, você terá referências que se cruzam com precisão, gerando um panorama cada vez mais detalhado.' }
 ],
 'CONECTA VOCÊ': [
 { question: 'Como iniciar uma parceria B2B?', answer: 'Para iniciar uma parceria B2B, entre em contato com nosso departamento de parcerias através do formulário de contato em nosso site.' },
