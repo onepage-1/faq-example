@@ -48,9 +48,9 @@ const categories = {
 { question: 'Quais são os critérios para definir seu market share?', answer: 'O ideal é utilizar diversos fatores para ter uma percepção mais completa do tamanho do seu mercado de atuação. Dessa forma, você terá referências que se cruzam com precisão, gerando um panorama cada vez mais detalhado.' }
 ],
 'CONECTA VOCÊ': [
-{ question: 'Como iniciar uma parceria B2B?', answer: 'Para iniciar uma parceria B2B, entre em contato com nosso departamento de parcerias através do formulário de contato em nosso site.' },
-{ question: 'Quais são os benefícios para parceiros comerciais?', answer: 'Os benefícios para parceiros comerciais incluem acesso a recursos exclusivos, treinamentos e oportunidades de expansão conjunta.' },
-{ question: 'Onde encontro as políticas para parcerias?', answer: 'As políticas para parcerias podem ser encontradas no portal do parceiro ou solicitadas diretamente ao departamento de parcerias.' }
+{ question: 'Como iniciar no programa Conecta Você?', answer: 'Para iniciar no programa Conecta Você, entre em contato com nosso departamento de parcerias através do formulário de contato em nosso site.' },
+{ question: 'Quais são os benefícios do Conecta Você?', answer: 'Os benefícios para do Conecta Você incluem acesso a recursos exclusivos, treinamentos e oportunidades de expansão conjunta.' },
+{ question: 'Onde encontro as políticas do Conecta Você?', answer: 'As políticas para o Conecta Você podem ser encontradas no portal do parceiro ou solicitadas diretamente ao departamento de parcerias.' }
 ],
 'PRIME': [
 { question: 'Qual é o propósito do Prime?', answer: 'O Prime é um programa de desenvolvimento focado em novas coisas.' },
